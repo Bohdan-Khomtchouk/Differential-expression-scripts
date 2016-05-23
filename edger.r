@@ -1,0 +1,10 @@
+# EdgeR
+x <- read.delim("file.txt", row.names = "Symbol")
+group <- factor(c(1,1,2,2))
+y <- DGEList(counts = x, group = group)
+y <- calcNormFactors(y)
+y <- estimateCommonDisp(y)
+y <- estimateTagwiseDisp(y)
+et <- exactTest(y)
+topTags(et)
+write.table(as.matrix(y$samples), file = "file_edgerR.txt")
