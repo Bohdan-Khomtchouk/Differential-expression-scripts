@@ -1,6 +1,8 @@
 # DESeq
 pasillaCountTable = read.table(“file.txt”, header = TRUE, row.names = 1)
-pasillaDesign = data.frame(row.names = colnames(pasillaCountTable), condition = c("untreated", "untreated", "treated", "treated", "treated"), libType = c("paired-end", "paired-end", "paired-end", "paired-end", "paired-end"))
+pasillaDesign = data.frame(row.names = colnames(pasillaCountTable), 
+                           condition = c("untreated", "untreated", "treated", "treated", "treated"), 
+                           libType = c("paired-end", "paired-end", "paired-end", "paired-end", "paired-end"))
 pairedSamples = pasillaDesign$libType == "paired-end"
 countTable = pasillaCountTable[, pairedSamples]
 condition = pasillaDesign$condition[pairedSamples]
